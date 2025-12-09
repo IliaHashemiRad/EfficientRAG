@@ -2,7 +2,7 @@
 
 This repository contains a **reproduction and adaptation** of the EfficientRAG framework, designed to perform multi-hop question answering efficiently by replacing expensive LLM calls during retrieval with lightweight, trained models.
 
-The implementation is adapted to run on **Google Colab** (using a single A100 GPU with 80GB memory) and utilizes a local **Meta-Llama-3-8B-Instruct** server via `vllm`(https://docs.vllm.ai/en/latest/), as the generator, replacing the proprietary OpenAI models used in the original paper.
+The implementation is adapted to run on **Google Colab** (using a single A100 GPU with 80GB memory) and utilizes a local **Meta-Llama-3-8B-Instruct** server via [`vllm`](https://docs.vllm.ai/en/latest/), as the generator, replacing the proprietary OpenAI models used in the original paper.
 
 ## 📄 Project Overview
 
