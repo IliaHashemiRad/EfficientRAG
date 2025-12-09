@@ -2,15 +2,15 @@
 
 This repository contains a **reproduction and adaptation** of the EfficientRAG framework, designed to perform multi-hop question answering efficiently by replacing expensive LLM calls during retrieval with lightweight, trained models.
 
-The implementation is adapted to run on **Google Colab** (using a single A100 GPU) and utilizes a local **Meta-Llama-3-8B-Instruct** server via `vllm` as the generator, replacing the proprietary OpenAI models used in the original paper.
+The implementation is adapted to run on **Google Colab** (using a single A100 GPU with 80GB memory) and utilizes a local **Meta-Llama-3-8B-Instruct** server via `vllm`(https://docs.vllm.ai/en/latest/), as the generator, replacing the proprietary OpenAI models used in the original paper.
 
 ## 📄 Project Overview
 
 EfficientRAG addresses the challenge of multi-hop question answering—where answering a question requires gathering evidence from multiple documents sequentially—without the high latency and cost of "Iterative RAG" (which uses an LLM at every step).
 
 Instead, this project implements two trainable components:
-1.  **Labeler (Token Classification):** Identifies essential tokens (keywords) in a passage that are relevant to the query.
-2.  **Filter (Binary Classification):** Determines if a retrieved passage is relevant or irrelevant, discarding noise.
+1.  **Labeler (Token Classification):** Identifies essential tokens (keywords) in a passage that are relevant to the query and determines if a retrieved passage is relevant or irrelevant, discarding noise.
+2.  **Filter (Binary Classification):** Determines the next query (the clearer query) based on the kept chunks and the previous query.
 
 By chaining these components, the system can iteratively retrieve and filter information before passing a compressed, high-quality context to the final LLM for answer generation.
 
@@ -29,8 +29,8 @@ EfficientRAG/
 │
 ├── EfficientRAG_Training.ipynb  # PHASE 2: Model Training
 │   ├── Loads the synthetic data generated in Phase 1.
-│   ├── Trains the Filter Model (DeBERTa-v3-large) for binary classification.
-│   ├── Trains the Labeler Model (DeBERTa-v3-large) for token classification.
+│   ├── Trains the Filter Model (DeBERTa-v3-large).
+│   ├── Trains the Labeler Model (DeBERTa-v3-large).
 │   └── Exports the trained model checkpoints.
 │
 ├── EfficientRAG_Inference.ipynb # PHASE 3: Inference & Evaluation
@@ -39,13 +39,12 @@ EfficientRAG/
 │   └── Evaluates performance (EM/F1) on the HotpotQA dataset.
 │
 ├── Report.pdf                       # Detailed project report with methodology and results.
-├── requirements.txt                 # Python dependencies.
 └── README.md                        # This file.
 ````
 
 ## 🛠️ Prerequisites & Dependencies
 
-The project is designed to run on **Google Colab** with an A100 GPU (or similar environment with \>14GB VRAM).
+The project is designed to run on **Google Colab** with an A100 GPU (or similar environment with \>80GB VRAM).
 
 The notebooks automatically install the following key libraries, others are installed based on the `requirements.txt` file of the original repo:
 
@@ -85,6 +84,8 @@ The code includes logic to handle this, but if you encounter a timeout:
       * Open `EfficientRAG_Inference.ipynb`.
       * Upload the trained model zip files.
       * Run the inference pipeline to generate answers and view evaluation metrics.
+  
+*Note:* I've uploaded my trained models' checkpoints on my Google Drive and they will be automatically downloaded if you run the inference code, but if you want the results on your own models, simply replace the links with yours and do the same.
 
 ## 📊 Results
 
@@ -92,7 +93,7 @@ Detailed in the `report.pdf`.
 
 ## 📝 Acknowledgments
 
-  * Original Paper: [EfficientRAG: Efficient Retriever for Multi-Hop Question Answering](https://arxiv.org/abs/2402.11746)
+  * Original Paper: [EfficientRAG: Efficient Retriever for Multi-Hop Question Answering](https://aclanthology.org/2024.emnlp-main.199.pdf)
   * Original Repository: [nil-zhuang/efficientrag-official](https://github.com/nil-zhuang/efficientrag-official)
   * Models: [Meta Llama 3](https://llama.meta.com/), [DeBERTa](https://huggingface.co/microsoft/deberta-v3-large), [Contriever](https://huggingface.co/facebook/contriever)
 
