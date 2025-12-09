@@ -6,7 +6,7 @@ The implementation is adapted to run on **Google Colab** (using a single A100 GP
 
 ## 📊 Project Poster
 
-![Project Poster](Final_Poster.png)
+![Project Poster](Final_Poster.jpg)
 *([Click here to download the high-resolution PDF](Final_Poster.pdf))*
 
 ## 📄 Project Overview
