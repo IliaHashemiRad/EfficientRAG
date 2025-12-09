@@ -4,6 +4,11 @@ This repository contains a **reproduction and adaptation** of the EfficientRAG f
 
 The implementation is adapted to run on **Google Colab** (using a single A100 GPU with 80GB memory) and utilizes a local **Meta-Llama-3-8B-Instruct** server via [`vllm`](https://docs.vllm.ai/en/latest/), as the generator, replacing the proprietary OpenAI models used in the original paper.
 
+## 📊 Project Poster
+
+![Project Poster](Final_Poster.png)
+*([Click here to download the high-resolution PDF](Final_Poster.pdf))*
+
 ## 📄 Project Overview
 
 EfficientRAG addresses the challenge of multi-hop question answering—where answering a question requires gathering evidence from multiple documents sequentially—without the high latency and cost of "Iterative RAG" (which uses an LLM at every step).
@@ -39,6 +44,8 @@ EfficientRAG/
 │   └── Evaluates performance (EM/F1) on the HotpotQA dataset.
 │
 ├── Report.pdf                       # Detailed project report with methodology and results.
+├── Final_Poster.pdf                 # High-res project poster.
+├── Final_Poster.png               # Poster preview image.
 └── README.md                        # This file.
 ````
 
