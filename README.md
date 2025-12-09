@@ -80,15 +80,15 @@ The code includes logic to handle this, but if you encounter a timeout:
 1.  **Clone/Download:** Clone this repository or download the notebooks.
 2.  **Upload to Colab:** Upload the notebooks to Google Colab.
 3.  **Phase 1 (Data Synthesis):**
-      * Open `EfficientRAG.ipynb`.
+      * Open [`EfficientRAG.ipynb`](EfficientRAG.ipynb).
       * Run all cells. You will need a **Hugging Face Token** with access to `Meta-Llama-3-8B-Instruct`.
       * This will generate the training data (`.jsonl` files).
 4.  **Phase 2 (Training):**
-      * Open `EfficientRAG_Training.ipynb`.
+      * Open [`EfficientRAG_Training.ipynb`](EfficientRAG_Training.ipynb).
       * Ensure the data from Phase 1 is available (or use the download cell provided in the notebook to fetch pre-computed data).
       * Run the training cells to produce `filter_model.zip` and `labeler_model.zip`.
 5.  **Phase 3 (Inference):**
-      * Open `EfficientRAG_Inference.ipynb`.
+      * Open [`EfficientRAG_Inference.ipynb`](EfficientRAG_Inference.ipynb).
       * Upload the trained model zip files.
       * Run the inference pipeline to generate answers and view evaluation metrics.
   
@@ -96,7 +96,7 @@ The code includes logic to handle this, but if you encounter a timeout:
 
 ## 📊 Results
 
-Detailed in the `report.pdf`.
+Detailed in the [`report.pdf`](report.pdf).
 
 ## 📝 Acknowledgments
 
